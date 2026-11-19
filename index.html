@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>파리에서 로마까지, 유럽 신혼여행 일정</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap">
+<style>
+  :root {
+    --paper: #F5F6F8;
+    --card: #FFFFFF;
+    --ink: #172033;
+    --muted: #5D6678;
+    --line: #DCE0E7;
+    --home: #172033;
+    --paris: #34508F;
+    --venezia: #157F86;
+    --firenze: #A0721A;
+    --roma: #9E2F37;
+    --serif: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+    --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    word-break: keep-all;
+    -webkit-text-size-adjust: 100%;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--paris); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Hero ---------- */
+  header.hero { padding-top: 56px; padding-bottom: 28px; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(2.3rem, 8vw, 3.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+  .hero .period { margin: 0; color: var(--muted); font-size: 1.02rem; }
+  .hero .period strong { color: var(--ink); font-weight: 600; }
+
+  /* Route line: the one bold element of the page */
+  .route { margin: 40px 0 8px; overflow-x: auto; padding-bottom: 6px; }
+  .route ol {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: 1.3fr 4fr 2.2fr 2.2fr 3fr 1fr;
+    min-width: 600px;
+  }
+  .route li { position: relative; padding-top: 30px; }
+  .route li::before {               /* segment bar */
+    content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 6px;
+    background: var(--c);
+  }
+  .route li::after {                /* stop dot */
+    content: ""; position: absolute; top: 2px; left: 0;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--card); border: 5px solid var(--c);
+  }
+  .route li:first-child::before { left: 10px; }
+  .route li.flight::before {        /* 비행 구간은 점선 */
+    height: 0; top: 11px; background: none; border-top: 3px dashed var(--c);
+  }
+  .route li:last-child::before { display: none; }
+  .route .city { display: block; font-family: var(--serif); font-weight: 700; font-size: 1.1rem; line-height: 1.3; }
+  .route .nights { display: block; font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 560px) {
+    .route ol { min-width: 0; grid-template-columns: repeat(6, 1fr); }
+    .route .city { font-size: 0.82rem; }
+    .route .nights { font-size: 0.75rem; }
+    .route .dates { display: none; }
+  }
+  .route .c-home  { --c: var(--home); }
+  .route .c-paris { --c: var(--paris); }
+  .route .c-venezia { --c: var(--venezia); }
+  .route .c-firenze { --c: var(--firenze); }
+  .route .c-roma  { --c: var(--roma); }
+
+  .today-link {
+    display: none; margin-top: 22px;
+    padding: 10px 16px; border-radius: 999px;
+    background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  }
+  .today-link.show { display: inline-block; }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: 36px 0 8px; }
+  h2 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 1.55rem; line-height: 1.3; margin: 0 0 16px;
+  }
+  .lead { color: var(--muted); margin: -8px 0 18px; font-size: 0.95rem; }
+
+  /* Legs table */
+  .legs { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .legs th, .legs td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .legs tr:last-child td { border-bottom: 0; }
+  .legs thead th { background: #EDEFF3; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+  .legs td.when { white-space: nowrap; font-weight: 600; }
+  .legs td.time { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; }
+  .legs .sub { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+  @media (max-width: 560px) {
+    .legs thead { display: none; }
+    .legs, .legs tbody, .legs tr, .legs td { display: block; width: 100%; }
+    .legs tr { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+    .legs tr:last-child { border-bottom: 0; }
+    .legs td { padding: 0; border: 0; }
+    .legs td.when { font-size: 0.85rem; color: var(--muted); }
+  }
+
+  /* ---------- Days ---------- */
+  .day {
+    display: grid; grid-template-columns: 88px 1fr; gap: 0 18px;
+    padding: 22px 0; border-top: 1px solid var(--line);
+    scroll-margin-top: 12px;
+  }
+  .day .date { text-align: right; padding-right: 16px; border-right: 4px solid var(--c); }
+  .day .date .dnum { display: block; font-family: var(--serif); font-weight: 900; font-size: 2.3rem; line-height: 1; }
+  .day .date .dmeta { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+  .day h3 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.4; }
+  .day h3 .place { color: var(--c); }
+  .day.is-today { background: linear-gradient(90deg, transparent 0, #fff 30%); border-radius: 0 12px 12px 0; }
+  .day.is-today h3::after {
+    content: "오늘"; margin-left: 8px; padding: 2px 8px; border-radius: 999px;
+    background: var(--c); color: #fff; font-size: 0.75rem; vertical-align: 3px;
+  }
+  .c-home { --c: var(--home); }
+  .c-paris { --c: var(--paris); }
+  .c-venezia { --c: var(--venezia); }
+  .c-firenze { --c: var(--firenze); }
+  .c-roma { --c: var(--roma); }
+
+  ul.plan { list-style: none; margin: 0; padding: 0; }
+  ul.plan > li { display: grid; grid-template-columns: 58px 1fr; gap: 10px; padding: 4px 0; }
+  ul.plan .t { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.95rem; }
+  ul.plan .t.soft { font-weight: 500; color: var(--muted); }
+  .tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; line-height: 1;
+    padding: 4px 7px; border-radius: 5px; margin-left: 4px; vertical-align: 2px;
+  }
+  .tag.inc { background: #E3EEE6; color: #2B6A3F; }
+  .tag.gift { background: var(--c); color: #fff; }
+  .tag.self { background: #ECEDF1; color: var(--muted); }
+  .note { font-size: 0.9rem; color: var(--muted); }
+  .warn { font-size: 0.9rem; color: var(--roma); }
+
+  details.more {
+    margin: 8px 0 4px; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  }
+  details.more > summary {
+    cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 0.95rem; list-style: none;
+  }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary::before { content: "+"; display: inline-block; width: 1.1em; color: var(--c, var(--muted)); font-weight: 700; }
+  details.more[open] > summary::before { content: "−"; }
+  details.more .body { padding: 0 14px 12px; font-size: 0.93rem; }
+  details.more .body p { margin: 0 0 8px; }
+  details.more dl { display: grid; grid-template-columns: 74px 1fr; gap: 4px 10px; margin: 0 0 8px; }
+  details.more dt { color: var(--muted); }
+  details.more dd { margin: 0; }
+
+  .meals { margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
+
+  /* ---------- Info blocks ---------- */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .panel h3 { margin: 0 0 8px; font-size: 1.02rem; }
+  .panel ul { margin: 0; padding-left: 1.1em; font-size: 0.93rem; }
+  .panel li { margin: 2px 0; }
+
+  ul.check { list-style: none; padding: 0; margin: 0; }
+  ul.check li { position: relative; padding: 10px 0 10px 30px; border-bottom: 1px solid var(--line); }
+  ul.check li:last-child { border-bottom: 0; }
+  ul.check li::before {
+    content: ""; position: absolute; left: 2px; top: 14px; width: 16px; height: 16px;
+    border: 2px solid var(--ink); border-radius: 4px;
+  }
+  ul.check .by { display: block; font-size: 0.85rem; color: var(--muted); }
+
+  .hotels h3 { font-size: 1rem; margin: 14px 0 4px; color: var(--c); }
+  .hotels h3:first-child { margin-top: 0; }
+  .hotels p { margin: 0 0 4px; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .day { grid-template-columns: 62px 1fr; gap: 0 12px; }
+    .day .date { padding-right: 10px; }
+    .day .date .dnum { font-size: 1.8rem; }
+    ul.plan > li { grid-template-columns: 50px 1fr; }
+  }
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .today-link, .route { display: none; }
+    details.more { border: 0; }
+    details.more > summary::before { content: ""; }
+    .day { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <h1>파리에서<br>로마까지</h1>
+  <p class="period"><strong>2026년 12월 28일 ~ 2027년 1월 9일</strong>, 11박 13일 신혼여행</p>
+
+  <nav class="route" aria-label="여행 경로">
+    <ol>
+      <li class="c-home flight"><span class="city">인천</span><span class="nights">12/28</span></li>
+      <li class="c-paris"><span class="city">파리</span><span class="nights">4박<span class="dates">, 12/28~1/1</span></span></li>
+      <li class="c-venezia"><span class="city">베네치아</span><span class="nights">2박<span class="dates">, 1/1~1/3</span></span></li>
+      <li class="c-firenze"><span class="city">피렌체</span><span class="nights">2박<span class="dates">, 1/3~1/5</span></span></li>
+      <li class="c-roma"><span class="city">로마</span><span class="nights">3박<span class="dates">, 1/5~1/8</span></span></li>
+      <li class="c-home"><span class="city">인천</span><span class="nights">1/9</span></li>
+    </ol>
+  </nav>
+
+  <a class="today-link" id="todayLink" href="#">오늘 일정 보기</a>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== 이동 한눈에 ===== -->
+  <section class="block" id="legs">
+    <h2>이동 한눈에</h2>
+    <p class="lead">현지 사정에 따라 시간이 바뀔 수 있으니, 출발 전 최종 확정서와 티켓을 다시 확인하세요.</p>
+    <table class="legs">
+      <thead>
+        <tr><th>날짜</th><th>구간</th><th>시간</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="when">12/28 (월)</td>
+          <td>인천 → 파리 샤를드골<span class="sub">아시아나 OZ501 직항, 약 14시간 15분</span></td>
+          <td class="time">10:05 – 16:25</td>
+        </tr>
+        <tr>
+          <td class="when">1/1 (금)</td>
+          <td>파리 → 베네치아<span class="sub">유럽 내 항공, 1시간 40분</span></td>
+          <td class="time">14:25 – 16:05</td>
+        </tr>
+        <tr>
+          <td class="when">1/3 (일)</td>
+          <td>베네치아 메스트레역 → 피렌체 S.M.N역<span class="sub">열차, 약 2시간</span></td>
+          <td class="time">10:00~10:30대 출발</td>
+        </tr>
+        <tr>
+          <td class="when">1/5 (화)</td>
+          <td>피렌체 S.M.N역 → 로마 테르미니역<span class="sub">열차, 약 1시간 40분</span></td>
+          <td class="time">18시대 출발</td>
+        </tr>
+        <tr>
+          <td class="when">1/8 (금) ~ 1/9 (토)</td>
+          <td>로마 → 인천<span class="sub">아시아나 OZ562 직항</span></td>
+          <td class="time">22:00 – 다음날 17:35</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 날짜별 일정 ===== -->
+  <section class="block" id="days">
+    <h2>날짜별 일정</h2>
+    <p class="lead"><span class="tag inc">포함</span> 상품에 포함된 일정, <span class="tag self">개별</span> 직접 이동하거나 따로 준비하는 일정입니다.</p>
+
+    <!-- Day 1 -->
+    <article class="day c-paris" id="d2026-12-28">
+      <div class="date"><span class="dnum">28</span><span class="dmeta">12월 월<br>1일차</span></div>
+      <div>
+        <h3>인천에서 <span class="place">파리</span>로</h3>
+        <ul class="plan">
+          <li><span class="t">10:05</span><span>인천공항 출발, 아시아나 OZ501 (약 14시간 15분)</span></li>
+          <li><span class="t">16:25</span><span>파리 샤를드골 공항 도착</span></li>
+          <li><span class="t soft">도착 후</span><span>공항 미팅 후 호텔까지 1커플 단독 전용차량 <span class="tag inc">포함</span><br><span class="note">현지인 또는 한국인 기사가 공항에서 맞이합니다. 캐리어는 1인 1개 기준이며, 더 있으면 추가 요금이 붙습니다.</span></span></li>
+          <li><span class="t soft">저녁</span><span>호텔 체크인 후 자유 시간</span></li>
+        </ul>
+        <div class="meals">조식 기내식, 중식 기내식, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 2 -->
+    <article class="day c-paris" id="d2026-12-29">
+      <div class="date"><span class="dnum">29</span><span class="dmeta">12월 화<br>2일차</span></div>
+      <div>
+        <h3><span class="place">파리</span> 허니문 스냅촬영, 자유 관광</h3>
+        <ul class="plan">
+          <li><span class="t soft">오전/오후</span><span><strong>파리 허니문 스냅촬영</strong> <span class="tag gift">허니문 특전</span><br>에펠탑에서 샤이오궁까지 1시간 단독 파파라치 촬영 (150컷, 보정 15컷)<br><span class="note">촬영 시간대는 오전 또는 오후로 현지에서 안내됩니다. 작가 팁 1인 €25는 현장에서 따로 냅니다.</span></span></li>
+          <li><span class="t soft">자유</span><span>파리지앵처럼 걷고 먹고 즐기는 자유 일정 <span class="tag self">개별</span></span></li>
+        </ul>
+        <details class="more">
+          <summary>추천 동선 3가지</summary>
+          <div class="body">
+            <p>1. 몽마르트르 언덕, 사크레쾨르 성당, 오페라 가르니에, 라파예트 백화점, 마들렌 성당</p>
+            <p>2. 퐁피두 센터, 마레 지구, 보주 광장, 바스티유 광장</p>
+            <p>3. 앵발리드, 몽마르트르 언덕, 사크레쾨르 성당, 화가들의 거리, 바토라부아, 사랑해 벽</p>
+          </div>
+        </details>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 3 -->
+    <article class="day c-paris" id="d2026-12-30">
+      <div class="date"><span class="dnum">30</span><span class="dmeta">12월 수<br>3일차</span></div>
+      <div>
+        <h3><span class="place">파리</span> 시내와 루브르 가이드 투어, 바토무슈</h3>
+        <ul class="plan">
+          <li><span class="t">08:50</span><span><strong>파리 시내 + 루브르 박물관 가이드 투어</strong> <span class="tag inc">포함</span><br><span class="note">16:50 종료 예정. 박물관과 시내 투어 순서는 바뀔 수 있습니다.</span></span></li>
+          <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
+          <li><span class="t soft">저녁</span><span><strong>바토무슈 센강 유람선</strong> <span class="tag inc">포함</span><br><span class="note">원하는 시간에 직접 탑승합니다. 약 1시간 10분.</span></span></li>
+        </ul>
+        <details class="more">
+          <summary>가이드 투어 상세</summary>
+          <div class="body">
+            <dl>
+              <dt>미팅</dt><dd>Bel-Air 역 앞, 한국인 가이드가 모시러 옵니다.<br><span class="note">Bel-Air 역 주변이 아닌 호텔이면 1·9호선 Franklin D. Roosevelt역 1번 출구 라코스테 매장 앞에서 만납니다.</span></dd>
+              <dt>포함</dt><dd>가이드비, 수신기 대여</dd>
+              <dt>불포함</dt><dd>교통비, 식사비, 입장료</dd>
+            </dl>
+            <p><strong>시내</strong>: 샹젤리제 거리, 개선문, 트로카데로 광장(에펠탑 전망), 알렉상드르 3세교, 그랑팔레와 쁘띠팔레, 파리 시청, 노트르담 성당, 셰익스피어 앤 컴퍼니, 생미셸 거리</p>
+            <p><strong>루브르</strong>: 박물관 내부를 가이드와 함께 관람</p>
+            <p class="note">오르세 미술관 + 몽마르트르 투어는 화·목에만 진행돼 이날은 루브르 투어로 진행합니다. 전용차량 투어(최대 2팀)로 바꾸면 1인 20만원이 추가됩니다.</p>
+          </div>
+        </details>
+        <details class="more">
+          <summary>바토무슈 탑승 정보</summary>
+          <div class="body">
+            <dl>
+              <dt>선착장</dt><dd>Port de la Conférence, Pont de l'Alma, 75008 Paris</dd>
+              <dt>운행</dt><dd>10:15~15:30 45분 간격, 15:30~22:30 30분 간격</dd>
+            </dl>
+            <p class="note">현지 사정에 따라 운행 시간이 바뀔 수 있습니다.</p>
+          </div>
+        </details>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 4 -->
+    <article class="day c-paris" id="d2026-12-31">
+      <div class="date"><span class="dnum">31</span><span class="dmeta">12월 목<br>4일차</span></div>
+      <div>
+        <h3><span class="place">파리</span> 자유 관광</h3>
+        <ul class="plan">
+          <li><span class="t soft">종일</span><span>파리 자유 관광 <span class="tag self">개별</span><br><span class="note">12/31과 1/1에는 현지 가이드 투어가 열리지 않습니다.</span></span></li>
+        </ul>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 5 -->
+    <article class="day c-venezia" id="d2027-01-01">
+      <div class="date"><span class="dnum">1</span><span class="dmeta">1월 금<br>5일차</span></div>
+      <div>
+        <h3>파리에서 <span class="place">베네치아</span>로</h3>
+        <ul class="plan">
+          <li><span class="t soft">오전</span><span>호텔 조식 후 체크아웃, 파리 공항으로 이동 <span class="tag self">개별</span><br><span class="note">출발 2시간 전(12:25 무렵)까지 공항에 도착하는 것을 권합니다. 1월 1일은 공휴일이라 대중교통 배차가 줄 수 있습니다.</span></span></li>
+          <li><span class="t">14:25</span><span>파리 출발</span></li>
+          <li><span class="t">16:05</span><span>베네치아 공항 도착</span></li>
+          <li><span class="t soft">도착 후</span><span>공항 미팅 후 호텔까지 1커플 단독 전용차량 <span class="tag inc">포함</span></span></li>
+          <li><span class="t soft">저녁</span><span>호텔 체크인 후 휴식</span></li>
+        </ul>
+        <p class="note">유럽 내 항공은 저비용 항공 기준으로 위탁 수하물이 1인 1개, 15~20kg입니다. 넘으면 추가 요금이 붙습니다.</p>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 6 -->
+    <article class="day c-venezia" id="d2027-01-02">
+      <div class="date"><span class="dnum">2</span><span class="dmeta">1월 토<br>6일차</span></div>
+      <div>
+        <h3><span class="place">베네치아</span> 가이드 투어, 스냅촬영, 곤돌라</h3>
+        <ul class="plan">
+          <li><span class="t">08:30</span><span><strong>베네치아 시내 가이드 투어 + 스냅촬영</strong> <span class="tag inc">포함</span><br><span class="note">Plaza 호텔 앞 미팅, 12:30 종료 예정</span></span></li>
+          <li><span class="t soft">투어 중</span><span><strong>곤돌라 30분 탑승</strong> <span class="tag inc">포함</span></span></li>
+          <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
+        </ul>
+        <details class="more">
+          <summary>투어 상세</summary>
+          <div class="body">
+            <dl>
+              <dt>코스</dt><dd>탄식의 다리, 두칼레 궁전, 산마르코 광장과 성당, 리알토 다리</dd>
+              <dt>스냅</dt><dd>작가가 동행하며 파파라치 컷 촬영 (원본 40~50장, 보정 20~30장)</dd>
+              <dt>포함</dt><dd>가이드비, 곤돌라</dd>
+              <dt>불포함</dt><dd>교통비, 식사비, 스냅 작가 팁 1인 €25</dd>
+            </dl>
+            <p class="warn">비가 오면 스냅촬영은 진행되지 않고 환불도 없습니다. 스냅촬영을 원하지 않으면 출발 한 달 전(11/28)까지 여행사에 알려야 합니다.</p>
+          </div>
+        </details>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 7 -->
+    <article class="day c-firenze" id="d2027-01-03">
+      <div class="date"><span class="dnum">3</span><span class="dmeta">1월 일<br>7일차</span></div>
+      <div>
+        <h3>베네치아에서 <span class="place">피렌체</span>로</h3>
+        <ul class="plan">
+          <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 메스트레역으로 이동 <span class="tag self">개별</span></span></li>
+          <li><span class="t">10:00~</span><span>베네치아 메스트레역 출발 (10:00~10:30대 열차, 약 2시간)</span></li>
+          <li><span class="t soft">12시대</span><span>피렌체 산타마리아노벨라(S.M.N)역 도착</span></li>
+          <li><span class="t soft">오후</span><span>호텔에 짐을 두고 피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">체크인 시간 전이면 호텔에 짐을 맡기면 됩니다.</span></span></li>
+        </ul>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 8 -->
+    <article class="day c-firenze" id="d2027-01-04">
+      <div class="date"><span class="dnum">4</span><span class="dmeta">1월 월<br>8일차</span></div>
+      <div>
+        <h3><span class="place">피렌체</span> 자유 관광</h3>
+        <ul class="plan">
+          <li><span class="t soft">종일</span><span>르네상스 거장들의 발자취를 따라 걷는 하루 <span class="tag self">개별</span><br>산타마리아노벨라 성당, 조토의 종탑, 두오모, 베키오 궁전, 베키오 다리, 미켈란젤로 광장</span></li>
+        </ul>
+        <p class="warn">우피치 미술관은 보통 월요일에 쉽니다. 우피치는 1/5(화) 낮에 다녀오는 것을 권합니다.</p>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 9 -->
+    <article class="day c-roma" id="d2027-01-05">
+      <div class="date"><span class="dnum">5</span><span class="dmeta">1월 화<br>9일차</span></div>
+      <div>
+        <h3>피렌체에서 <span class="place">로마</span>로</h3>
+        <ul class="plan">
+          <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 짐은 호텔에 맡기기</span></li>
+          <li><span class="t soft">낮</span><span>피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">세계 3대 미술관으로 꼽히는 우피치 미술관 관람 추천</span></span></li>
+          <li><span class="t">18시대</span><span>피렌체 S.M.N역 출발 (약 1시간 40분) <span class="tag self">개별</span></span></li>
+          <li><span class="t soft">20시 전후</span><span>로마 테르미니역 도착, 호텔로 이동해 체크인</span></li>
+        </ul>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 10 -->
+    <article class="day c-roma" id="d2027-01-06">
+      <div class="date"><span class="dnum">6</span><span class="dmeta">1월 수<br>10일차</span></div>
+      <div>
+        <h3><span class="place">로마</span> 자유 관광</h3>
+        <ul class="plan">
+          <li><span class="t soft">종일</span><span>모든 길은 로마로 통한다, 로마 시내 자유 관광 <span class="tag self">개별</span></span></li>
+        </ul>
+        <details class="more">
+          <summary>추천 동선 2가지</summary>
+          <div class="body">
+            <p>1. 스페인 계단, 콘도티 거리, 트레비 분수, 판테온, 베네치아 광장, 비토리오 에마누엘레 2세 기념관</p>
+            <p>2. 포로 로마노, 콜로세움, 콘스탄티누스 개선문, 대전차 경기장, 진실의 입</p>
+          </div>
+        </details>
+        <p class="note">1월 6일은 이탈리아 공휴일(주현절)이라 바티칸 박물관이 쉬고, 일부 상점·명소가 단축 운영할 수 있습니다.</p>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 11 -->
+    <article class="day c-roma" id="d2027-01-07">
+      <div class="date"><span class="dnum">7</span><span class="dmeta">1월 목<br>11일차</span></div>
+      <div>
+        <h3><span class="place">로마</span> 바티칸과 시내 전용차량 가이드 투어</h3>
+        <ul class="plan">
+          <li><span class="t">08:00</span><span><strong>바티칸 박물관 + 로마 시내 투어</strong> <span class="tag inc">포함</span><br><span class="note">한국인 가이드가 전용차량으로 호텔 로비까지 데리러 옵니다. 1~2쌍 소수 정예(성수기 최대 4쌍), 동절기 16:00 종료 예정</span></span></li>
+          <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
+        </ul>
+        <details class="more">
+          <summary>투어 상세</summary>
+          <div class="body">
+            <dl>
+              <dt>포함</dt><dd>가이드비, 차량비</dd>
+              <dt>불포함</dt><dd>입장료, 무선 수신기 대여비, 식사비</dd>
+            </dl>
+            <p><strong>바티칸 박물관</strong>: 피나코테카, 솔방울 정원, 동물의 방, 팔각 정원, 원형의 방, 이집트관, 피오 클레멘티노관, 뮤즈의 방, 아라찌의 방, 성모 마리아의 방, 그리스 십자가의 방, 촛대의 회랑, 라파엘로의 방, 시스티나 성당, 성 베드로 광장과 대성당, 미켈란젤로의 피에타</p>
+            <p><strong>로마 시내</strong>: 콜로세움과 포로 로마노(외관), 대전차 경기장, 트레비 분수, 스페인 계단</p>
+            <p class="note">바티칸 박물관이 쉬는 날이면 로마 시내 투어(콜로세움·포로 로마노 내부) 또는 남부 투어(단체)로 바뀝니다. 2027년 휴관일은 최종 확정서에서 확인하세요.</p>
+          </div>
+        </details>
+        <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
+      </div>
+    </article>
+
+    <!-- Day 12 -->
+    <article class="day c-roma" id="d2027-01-08">
+      <div class="date"><span class="dnum">8</span><span class="dmeta">1월 금<br>12일차</span></div>
+      <div>
+        <h3><span class="place">로마</span>에서 집으로</h3>
+        <ul class="plan">
+          <li><span class="t soft">오전</span><span>호텔 조식 후 체크아웃, 로마 시내 자유 관광 <span class="tag self">개별</span></span></li>
+          <li><span class="t soft">저녁</span><span>로마 공항으로 이동 <span class="tag self">개별</span><br><span class="note">허니문 특전을 스냅촬영으로 골라 공항 픽업 차량은 없습니다. 국제선이니 출발 3시간 전(19시 무렵)까지 도착하는 것을 권합니다.</span></span></li>
+          <li><span class="t">22:00</span><span>로마 출발, 아시아나 OZ562</span></li>
+        </ul>
+        <div class="meals">조식 호텔, 중식 자유, 석식 기내식</div>
+      </div>
+    </article>
+
+    <!-- Day 13 -->
+    <article class="day c-home" id="d2027-01-09">
+      <div class="date"><span class="dnum">9</span><span class="dmeta">1월 토<br>13일차</span></div>
+      <div>
+        <h3>인천 도착</h3>
+        <ul class="plan">
+          <li><span class="t">17:35</span><span>인천공항 도착</span></li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 출발 전 체크 ===== -->
+  <section class="block" id="check">
+    <h2>출발 전 체크</h2>
+    <ul class="check">
+      <li>여권 유효기간이 출발일 기준 6개월 이상 남았는지 확인<span class="by">6개월 미만이면 출입국과 열차 발권이 안 됩니다.</span></li>
+      <li>베네치아 스냅촬영 진행 여부 결정<span class="by">원하지 않으면 11/28까지 여행사에 알리기</span></li>
+      <li>최종 확정서와 현지 안내 자료 받기<span class="by">출발 2주 전(12/14 무렵) 메일로 옵니다. 호텔도 이때 확정됩니다.</span></li>
+      <li>아시아나 마일리지 회원 가입<span class="by">출발 전에 가입해야 적립됩니다.</span></li>
+      <li>유로 현금 준비<span class="by">스냅 작가 팁(파리, 베네치아 각 1인 €25)과 도시세(1인 1박 €3~8)는 현장에서 냅니다.</span></li>
+      <li>캐리어는 1인 1개로 꾸리기<span class="by">전용차량 픽업과 유럽 내 항공(15~20kg) 모두 1인 1개 기준입니다.</span></li>
+    </ul>
+  </section>
+
+  <!-- ===== 포함 / 불포함 ===== -->
+  <section class="block" id="included">
+    <h2>포함된 것과 따로 내는 것</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>포함</h3>
+        <ul>
+          <li>인천~파리, 로마~인천 왕복 항공권 (아시아나 직항)</li>
+          <li>파리~베네치아 항공권</li>
+          <li>베네치아~피렌체, 피렌체~로마 2등석 열차권</li>
+          <li>도시별 호텔</li>
+          <li>공항 픽업 전용차량 (파리, 베네치아 도착 시)</li>
+          <li>도시별 가이드 투어 (파리, 베네치아, 로마)</li>
+          <li>바토무슈 유람선, 베네치아 곤돌라</li>
+          <li>파리 허니문 스냅촬영 (허니문 특전)</li>
+          <li>여행 중 안전 도우미 Trip Concierge Service</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>따로 냄</h3>
+        <ul>
+          <li>식사비</li>
+          <li>도시세 (1인 1박 €3~8)</li>
+          <li>입장료, 대중교통비</li>
+          <li>스냅 작가 팁 (1인 €25)</li>
+          <li>자유 일정 중 추가 투어, 개인 경비</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">Trip Concierge Service: 여행 중 사고나 항공·열차 문제가 생기면 현지 매니저가 언어를 도와줍니다. 현지 시간 09:00~18:00에 전화나 카카오톡으로 연락하며, 연락처는 최종 확정서에 있습니다.</p>
+  </section>
+
+  <!-- ===== 호텔 ===== -->
+  <section class="block" id="hotels">
+    <h2>호텔 후보</h2>
+    <p class="lead">아래 호텔 또는 같은 등급으로 배정되며, 최종 호텔은 출발 2주 전 확정서에서 안내됩니다.</p>
+    <details class="more">
+      <summary>도시별 후보 호텔 보기</summary>
+      <div class="body hotels">
+        <h3 class="c-paris">파리 (4박)</h3>
+        <p>Best Western Allegro Nation, Adagio Paris Nation <span class="note">Bel-Air역 도보 6분</span></p>
+        <p>Le 209 Bercy, Adagio City Aparthotel Paris Bercy <span class="note">Bercy역 도보 13분</span></p>
+        <p>Best Western Ronceray Opera, Mercure Paris Opera Lafayette, Hotel Regina Opera Grands Boulevards <span class="note">Bonne Nouvelle역 도보 10분</span></p>
+        <p>New Hotel le Voltaire <span class="note">Voltaire역 도보 10분</span></p>
+        <p>Le Marceau Bastille Hotel <span class="note">Bastille역 도보 10분</span></p>
+        <p>Mercure Paris Place d'Italie <span class="note">Corvisart역 도보 10분</span></p>
+        <h3 class="c-venezia">베네치아 (2박)</h3>
+        <p>Plaza Hotel, Best Western Hotel Tritone <span class="note">메스트레역 도보 5분</span></p>
+        <h3 class="c-firenze">피렌체 (2박)</h3>
+        <p>Delle Nazioni Hotel, Hotel Luxor Florence, Caravaggio Hotel, Palazzo Vecchio Hotel <span class="note">S.M.N역 도보 10분. 구시가지 역사지구라 객실이 작은 편이고 냉장고가 없을 수 있습니다.</span></p>
+        <h3 class="c-roma">로마 (3박)</h3>
+        <p>Demetra Hotel, Hotel Genova, Moderno Hotel Roma, Hotel Diana Roof Garden, Bettoja Atlantico Hotel, Hotel Aphrodite Roma, Best Western Artdeco <span class="note">테르미니역 도보 10분</span></p>
+        <p>Napoleon <span class="note">테르미니역 도보 15분</span></p>
+      </div>
+    </details>
+    <p class="note" style="margin-top:10px">호텔 체크인 때 보증용 신용카드를 요구할 수 있습니다. 미니바 등 개인 경비 보증 목적이며, 사용하지 않으면 청구되지 않습니다.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  여행사 일정표(2026년 7월 발행)를 바탕으로 정리했습니다. 열차·항공 시간과 투어 순서는 현지 사정에 따라 바뀔 수 있으니 최종 확정서를 기준으로 하세요.
+</footer>
+
+<script>
+  // 여행 기간 중이면 오늘 날짜 일정을 표시하고 바로가기 버튼을 보여준다.
+  (function () {
+    var d = new Date();
+    var id = "d" + d.getFullYear() + "-" +
+      String(d.getMonth() + 1).padStart(2, "0") + "-" +
+      String(d.getDate()).padStart(2, "0");
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("is-today");
+    var link = document.getElementById("todayLink");
+    link.href = "#" + id;
+    link.classList.add("show");
+  })();
+</script>
+</body>
+</html>
