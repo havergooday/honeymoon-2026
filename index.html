@@ -132,10 +132,10 @@
   .day .date { text-align: right; padding-right: 16px; border-right: 4px solid var(--c); }
   .day .date .dnum { display: block; font-family: var(--serif); font-weight: 900; font-size: 2.3rem; line-height: 1; }
   .day .date .dmeta { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
-  .day h3 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.4; }
-  .day h3 .place { color: var(--c); }
+  .day h4 { margin: 0 0 10px; font-size: 1.15rem; line-height: 1.4; }
+  .day h4 .place { color: var(--c); }
   .day.is-today { background: linear-gradient(90deg, transparent 0, #fff 30%); border-radius: 0 12px 12px 0; }
-  .day.is-today h3::after {
+  .day.is-today h4::after {
     content: "오늘"; margin-left: 8px; padding: 2px 8px; border-radius: 999px;
     background: var(--c); color: #fff; font-size: 0.75rem; vertical-align: 3px;
   }
@@ -193,20 +193,25 @@
   }
   ul.check .by { display: block; font-size: 0.85rem; color: var(--muted); }
 
-  ul.stays { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  ul.stays li {
-    display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline;
-    background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--c);
-    border-radius: 0 10px 10px 0; padding: 12px 14px;
+  .city { margin: 34px 0 6px; scroll-margin-top: 12px; }
+  .city-name {
+    font-family: var(--serif); font-weight: 900; font-size: 1.7rem; line-height: 1.2;
+    color: var(--c); margin: 0 0 12px; padding-top: 14px; border-top: 4px solid var(--c);
   }
-  ul.stays .sc { font-family: var(--serif); font-weight: 700; color: var(--c); }
-  ul.stays strong { display: block; font-size: 1.02rem; }
-  ul.stays .sd { display: block; font-size: 0.85rem; color: var(--muted); }
-  ul.stays .sa { display: block; font-size: 0.88rem; margin-top: 2px; }
-  ul.stays .smap { grid-column: 1 / -1; display: block; margin-top: 4px; }
-  ul.stays .smap img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
-  ul.stays .slink { grid-column: 1 / -1; justify-self: start; font-size: 0.88rem; font-weight: 600; color: var(--c); }
-  @media (max-width: 480px) { ul.stays li { grid-template-columns: 1fr; gap: 4px 0; } }
+  .city-dates { font-family: var(--sans); font-weight: 500; font-size: 0.9rem; color: var(--muted); margin-left: 10px; }
+  .stay {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 16px; align-items: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px;
+  }
+  .stay-info { display: flex; flex-direction: column; gap: 2px; }
+  .stay-label { font-size: 0.8rem; font-weight: 700; color: var(--c); }
+  .stay-info strong { font-size: 1.08rem; line-height: 1.35; }
+  .stay .sa { font-size: 0.9rem; }
+  .stay .sd { font-size: 0.85rem; color: var(--muted); }
+  .stay .slink { margin-top: 8px; font-size: 0.88rem; font-weight: 600; color: var(--c); }
+  .stay .smap img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
+  @media (max-width: 600px) { .stay { grid-template-columns: 1fr; gap: 10px; } }
+  .city + .day { border-top: 0; }
 
   footer { padding: 40px 0 56px; color: var(--muted); font-size: 0.85rem; }
 
@@ -285,49 +290,30 @@
     </table>
   </section>
 
-  <!-- ===== 호텔 ===== -->
-  <section class="block" id="hotels">
-    <h2>묵는 호텔</h2>
-    <ul class="stays">
-      <li class="c-paris">
-        <span class="sc">파리</span>
-        <span class="sh"><strong>New Hotel Lafayette</strong><span class="sd">12/28 ~ 1/1, 4박</span><span class="sa">25 Rue Buffault, 75009 Paris</span><span class="sd">Cadet역(7호선)까지 약 170m, Grands Boulevards역(8·9호선)까지 약 550m (직선거리)</span></span>
-        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener"><img src="img/map-paris.jpg" width="600" height="520" loading="lazy" alt="파리 호텔 New Hotel Lafayette 위치 지도"></a>
-        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener">Google 지도에서 열기</a>
-      </li>
-      <li class="c-venezia">
-        <span class="sc">베네치아</span>
-        <span class="sh"><strong>Plaza Venice</strong><span class="sd">1/1 ~ 1/3, 2박</span><span class="sa">Viale Stazione 36, 30171 Mestre</span><span class="sd">베네치아 메스트레역 바로 맞은편, 약 100m</span></span>
-        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener"><img src="img/map-venezia.jpg" width="600" height="400" loading="lazy" alt="베네치아 호텔 Plaza Venice 위치 지도"></a>
-        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener">Google 지도에서 열기</a>
-      </li>
-      <li class="c-firenze">
-        <span class="sc">피렌체</span>
-        <span class="sh"><strong>Hotel Albani Firenze</strong><span class="sd">1/3 ~ 1/5, 2박</span><span class="sa">Via Fiume 12, 50123 Firenze</span><span class="sd">피렌체 S.M.N역까지 약 230m (직선거리)</span></span>
-        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener"><img src="img/map-firenze.jpg" width="600" height="400" loading="lazy" alt="피렌체 호텔 Hotel Albani Firenze 위치 지도"></a>
-        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener">Google 지도에서 열기</a>
-      </li>
-      <li class="c-roma">
-        <span class="sc">로마</span>
-        <span class="sh"><strong>Hotel Diana Roof Garden</strong><span class="sd">1/5 ~ 1/8, 3박</span><span class="sa">Via Principe Amedeo 4, 00185 Roma</span><span class="sd">로마 테르미니역까지 약 360m (직선거리)</span></span>
-        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener"><img src="img/map-roma.jpg" width="600" height="400" loading="lazy" alt="로마 호텔 Hotel Diana Roof Garden 위치 지도"></a>
-        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener">Google 지도에서 열기</a>
-      </li>
-    </ul>
-    <p class="note" style="margin-top:10px">지도를 누르면 Google 지도에서 길찾기를 할 수 있습니다. 지도 이미지 © OpenStreetMap contributors</p>
-    <p class="note" style="margin-top:10px">체크인 때 보증용 신용카드를 요구할 수 있습니다. 미니바 등 개인 경비 보증 목적이며, 사용하지 않으면 청구되지 않습니다.</p>
-  </section>
-
   <!-- ===== 날짜별 일정 ===== -->
   <section class="block" id="days">
     <h2>날짜별 일정</h2>
     <p class="lead"><span class="tag inc">포함</span> 상품에 포함된 일정, <span class="tag self">개별</span> 직접 이동하거나 따로 준비하는 일정입니다.</p>
 
+    <div class="city c-paris" id="city-paris">
+      <h3 class="city-name">파리<span class="city-dates">12/28 ~ 1/1, 4박</span></h3>
+      <div class="stay">
+        <div class="stay-info">
+          <span class="stay-label">숙소</span>
+          <strong>New Hotel Lafayette</strong>
+          <span class="sa">25 Rue Buffault, 75009 Paris</span>
+          <span class="sd">Cadet역(7호선)까지 약 170m, Grands Boulevards역(8·9호선)까지 약 550m (직선거리)</span>
+          <a class="slink" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener">Google 지도에서 열기</a>
+        </div>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener"><img src="img/map-paris.jpg" width="600" height="520" loading="lazy" alt="파리 호텔 New Hotel Lafayette 위치 지도"></a>
+      </div>
+    </div>
+
     <!-- Day 1 -->
     <article class="day c-paris" id="d2026-12-28">
       <div class="date"><span class="dnum">28</span><span class="dmeta">12월 월<br>1일차</span></div>
       <div>
-        <h3>인천에서 <span class="place">파리</span>로</h3>
+        <h4>인천에서 <span class="place">파리</span>로</h4>
         <ul class="plan">
           <li><span class="t">10:05</span><span>인천공항 출발, 아시아나 OZ501 (약 14시간 15분)</span></li>
           <li><span class="t">16:25</span><span>파리 샤를드골 공항 도착</span></li>
@@ -342,7 +328,7 @@
     <article class="day c-paris" id="d2026-12-29">
       <div class="date"><span class="dnum">29</span><span class="dmeta">12월 화<br>2일차</span></div>
       <div>
-        <h3><span class="place">파리</span> 허니문 스냅촬영, 자유 관광</h3>
+        <h4><span class="place">파리</span> 허니문 스냅촬영, 자유 관광</h4>
         <ul class="plan">
           <li><span class="t soft">오전/오후</span><span><strong>파리 허니문 스냅촬영</strong> <span class="tag gift">허니문 특전</span><br>에펠탑에서 샤이오궁까지 1시간 단독 파파라치 촬영 (150컷, 보정 15컷)<br><span class="note">촬영 시간대는 오전 또는 오후로 현지에서 안내됩니다. 작가 팁 1인 €25는 현장에서 따로 냅니다.</span></span></li>
           <li><span class="t soft">자유</span><span>파리지앵처럼 걷고 먹고 즐기는 자유 일정 <span class="tag self">개별</span></span></li>
@@ -363,7 +349,7 @@
     <article class="day c-paris" id="d2026-12-30">
       <div class="date"><span class="dnum">30</span><span class="dmeta">12월 수<br>3일차</span></div>
       <div>
-        <h3><span class="place">파리</span> 시내와 루브르 가이드 투어, 바토무슈</h3>
+        <h4><span class="place">파리</span> 시내와 루브르 가이드 투어, 바토무슈</h4>
         <ul class="plan">
           <li><span class="t">08:50</span><span><strong>파리 시내 + 루브르 박물관 가이드 투어</strong> <span class="tag inc">포함</span><br><span class="note">Franklin D. Roosevelt역 1번 출구에서 미팅, 16:50 종료 예정. 박물관과 시내 투어 순서는 바뀔 수 있습니다.</span></span></li>
           <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
@@ -400,7 +386,7 @@
     <article class="day c-paris" id="d2026-12-31">
       <div class="date"><span class="dnum">31</span><span class="dmeta">12월 목<br>4일차</span></div>
       <div>
-        <h3><span class="place">파리</span> 자유 관광</h3>
+        <h4><span class="place">파리</span> 자유 관광</h4>
         <ul class="plan">
           <li><span class="t soft">종일</span><span>파리 자유 관광 <span class="tag self">개별</span><br><span class="note">12/31과 1/1에는 현지 가이드 투어가 열리지 않습니다.</span></span></li>
         </ul>
@@ -408,11 +394,25 @@
       </div>
     </article>
 
+    <div class="city c-venezia" id="city-venezia">
+      <h3 class="city-name">베네치아<span class="city-dates">1/1 ~ 1/3, 2박</span></h3>
+      <div class="stay">
+        <div class="stay-info">
+          <span class="stay-label">숙소</span>
+          <strong>Plaza Venice</strong>
+          <span class="sa">Viale Stazione 36, 30171 Mestre</span>
+          <span class="sd">베네치아 메스트레역 바로 맞은편, 약 100m</span>
+          <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener">Google 지도에서 열기</a>
+        </div>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener"><img src="img/map-venezia.jpg" width="600" height="400" loading="lazy" alt="베네치아 호텔 Plaza Venice 위치 지도"></a>
+      </div>
+    </div>
+
     <!-- Day 5 -->
     <article class="day c-venezia" id="d2027-01-01">
       <div class="date"><span class="dnum">1</span><span class="dmeta">1월 금<br>5일차</span></div>
       <div>
-        <h3>파리에서 <span class="place">베네치아</span>로</h3>
+        <h4>파리에서 <span class="place">베네치아</span>로</h4>
         <ul class="plan">
           <li><span class="t soft">오전</span><span>호텔 조식 후 체크아웃, 파리 공항으로 이동 <span class="tag self">개별</span><br><span class="note">출발 2시간 전(12:25 무렵)까지 공항에 도착하는 것을 권합니다. 1월 1일은 공휴일이라 대중교통 배차가 줄 수 있습니다.</span></span></li>
           <li><span class="t">14:25</span><span>파리 출발</span></li>
@@ -429,7 +429,7 @@
     <article class="day c-venezia" id="d2027-01-02">
       <div class="date"><span class="dnum">2</span><span class="dmeta">1월 토<br>6일차</span></div>
       <div>
-        <h3><span class="place">베네치아</span> 가이드 투어, 스냅촬영, 곤돌라</h3>
+        <h4><span class="place">베네치아</span> 가이드 투어, 스냅촬영, 곤돌라</h4>
         <ul class="plan">
           <li><span class="t">08:30</span><span><strong>베네치아 시내 가이드 투어 + 스냅촬영</strong> <span class="tag inc">포함</span><br><span class="note">묵는 호텔(Plaza Venice) 앞에서 미팅, 12:30 종료 예정</span></span></li>
           <li><span class="t soft">투어 중</span><span><strong>곤돌라 30분 탑승</strong> <span class="tag inc">포함</span></span></li>
@@ -451,11 +451,25 @@
       </div>
     </article>
 
+    <div class="city c-firenze" id="city-firenze">
+      <h3 class="city-name">피렌체<span class="city-dates">1/3 ~ 1/5, 2박</span></h3>
+      <div class="stay">
+        <div class="stay-info">
+          <span class="stay-label">숙소</span>
+          <strong>Hotel Albani Firenze</strong>
+          <span class="sa">Via Fiume 12, 50123 Firenze</span>
+          <span class="sd">피렌체 S.M.N역까지 약 230m (직선거리)</span>
+          <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener">Google 지도에서 열기</a>
+        </div>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener"><img src="img/map-firenze.jpg" width="600" height="400" loading="lazy" alt="피렌체 호텔 Hotel Albani Firenze 위치 지도"></a>
+      </div>
+    </div>
+
     <!-- Day 7 -->
     <article class="day c-firenze" id="d2027-01-03">
       <div class="date"><span class="dnum">3</span><span class="dmeta">1월 일<br>7일차</span></div>
       <div>
-        <h3>베네치아에서 <span class="place">피렌체</span>로</h3>
+        <h4>베네치아에서 <span class="place">피렌체</span>로</h4>
         <ul class="plan">
           <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 메스트레역으로 이동 <span class="tag self">개별</span></span></li>
           <li><span class="t">10:00~</span><span>베네치아 메스트레역 출발 (10:00~10:30대 열차, 약 2시간)</span></li>
@@ -470,7 +484,7 @@
     <article class="day c-firenze" id="d2027-01-04">
       <div class="date"><span class="dnum">4</span><span class="dmeta">1월 월<br>8일차</span></div>
       <div>
-        <h3><span class="place">피렌체</span> 자유 관광</h3>
+        <h4><span class="place">피렌체</span> 자유 관광</h4>
         <ul class="plan">
           <li><span class="t soft">종일</span><span>르네상스 거장들의 발자취를 따라 걷는 하루 <span class="tag self">개별</span><br>산타마리아노벨라 성당, 조토의 종탑, 두오모, 베키오 궁전, 베키오 다리, 미켈란젤로 광장</span></li>
         </ul>
@@ -479,11 +493,25 @@
       </div>
     </article>
 
+    <div class="city c-roma" id="city-roma">
+      <h3 class="city-name">로마<span class="city-dates">1/5 ~ 1/8, 3박</span></h3>
+      <div class="stay">
+        <div class="stay-info">
+          <span class="stay-label">숙소</span>
+          <strong>Hotel Diana Roof Garden</strong>
+          <span class="sa">Via Principe Amedeo 4, 00185 Roma</span>
+          <span class="sd">로마 테르미니역까지 약 360m (직선거리)</span>
+          <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener">Google 지도에서 열기</a>
+        </div>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener"><img src="img/map-roma.jpg" width="600" height="400" loading="lazy" alt="로마 호텔 Hotel Diana Roof Garden 위치 지도"></a>
+      </div>
+    </div>
+
     <!-- Day 9 -->
     <article class="day c-roma" id="d2027-01-05">
       <div class="date"><span class="dnum">5</span><span class="dmeta">1월 화<br>9일차</span></div>
       <div>
-        <h3>피렌체에서 <span class="place">로마</span>로</h3>
+        <h4>피렌체에서 <span class="place">로마</span>로</h4>
         <ul class="plan">
           <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 짐은 호텔에 맡기기</span></li>
           <li><span class="t soft">낮</span><span>피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">세계 3대 미술관으로 꼽히는 우피치 미술관 관람 추천</span></span></li>
@@ -498,7 +526,7 @@
     <article class="day c-roma" id="d2027-01-06">
       <div class="date"><span class="dnum">6</span><span class="dmeta">1월 수<br>10일차</span></div>
       <div>
-        <h3><span class="place">로마</span> 자유 관광</h3>
+        <h4><span class="place">로마</span> 자유 관광</h4>
         <ul class="plan">
           <li><span class="t soft">종일</span><span>모든 길은 로마로 통한다, 로마 시내 자유 관광 <span class="tag self">개별</span></span></li>
         </ul>
@@ -518,7 +546,7 @@
     <article class="day c-roma" id="d2027-01-07">
       <div class="date"><span class="dnum">7</span><span class="dmeta">1월 목<br>11일차</span></div>
       <div>
-        <h3><span class="place">로마</span> 바티칸과 시내 전용차량 가이드 투어</h3>
+        <h4><span class="place">로마</span> 바티칸과 시내 전용차량 가이드 투어</h4>
         <ul class="plan">
           <li><span class="t">08:00</span><span><strong>바티칸 박물관 + 로마 시내 투어</strong> <span class="tag inc">포함</span><br><span class="note">한국인 가이드가 전용차량으로 호텔 로비까지 데리러 옵니다. 1~2쌍 소수 정예(성수기 최대 4쌍), 동절기 16:00 종료 예정</span></span></li>
           <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
@@ -543,7 +571,7 @@
     <article class="day c-roma" id="d2027-01-08">
       <div class="date"><span class="dnum">8</span><span class="dmeta">1월 금<br>12일차</span></div>
       <div>
-        <h3><span class="place">로마</span>에서 집으로</h3>
+        <h4><span class="place">로마</span>에서 집으로</h4>
         <ul class="plan">
           <li><span class="t soft">오전</span><span>호텔 조식 후 체크아웃, 로마 시내 자유 관광 <span class="tag self">개별</span></span></li>
           <li><span class="t soft">저녁</span><span>로마 공항으로 이동 <span class="tag self">개별</span><br><span class="note">허니문 특전을 스냅촬영으로 골라 공항 픽업 차량은 없습니다. 국제선이니 출발 3시간 전(19시 무렵)까지 도착하는 것을 권합니다.</span></span></li>
@@ -557,7 +585,7 @@
     <article class="day c-home" id="d2027-01-09">
       <div class="date"><span class="dnum">9</span><span class="dmeta">1월 토<br>13일차</span></div>
       <div>
-        <h3>인천 도착</h3>
+        <h4>인천 도착</h4>
         <ul class="plan">
           <li><span class="t">17:35</span><span>인천공항 도착</span></li>
         </ul>
@@ -574,6 +602,7 @@
       <li>최종 확정서와 현지 안내 자료 받기<span class="by">출발 2주 전(12/14 무렵) 메일로 옵니다.</span></li>
       <li>아시아나 마일리지 회원 가입<span class="by">출발 전에 가입해야 적립됩니다.</span></li>
       <li>유로 현금 준비<span class="by">스냅 작가 팁(파리, 베네치아 각 1인 €25)과 도시세(1인 1박 €3~8)는 현장에서 냅니다.</span></li>
+      <li>호텔 체크인용 신용카드 챙기기<span class="by">미니바 등 개인 경비 보증용으로 요구할 수 있으며, 사용하지 않으면 청구되지 않습니다.</span></li>
       <li>캐리어는 1인 1개로 꾸리기<span class="by">전용차량 픽업과 유럽 내 항공(15~20kg) 모두 1인 1개 기준입니다.</span></li>
     </ul>
   </section>
@@ -614,7 +643,8 @@
 </main>
 
 <footer class="wrap">
-  여행사 일정표(2026년 7월 발행)를 바탕으로 정리했습니다. 열차·항공 시간과 투어 순서는 현지 사정에 따라 바뀔 수 있으니 최종 확정서를 기준으로 하세요.
+  여행사 일정표(2026년 7월 발행)를 바탕으로 정리했습니다. 열차·항공 시간과 투어 순서는 현지 사정에 따라 바뀔 수 있으니 최종 확정서를 기준으로 하세요.<br>
+  지도 이미지 © OpenStreetMap contributors
 </footer>
 
 <script>
