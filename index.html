@@ -193,9 +193,20 @@
   }
   ul.check .by { display: block; font-size: 0.85rem; color: var(--muted); }
 
-  .hotels h3 { font-size: 1rem; margin: 14px 0 4px; color: var(--c); }
-  .hotels h3:first-child { margin-top: 0; }
-  .hotels p { margin: 0 0 4px; }
+  ul.stays { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  ul.stays li {
+    display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline;
+    background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--c);
+    border-radius: 0 10px 10px 0; padding: 12px 14px;
+  }
+  ul.stays .sc { font-family: var(--serif); font-weight: 700; color: var(--c); }
+  ul.stays strong { display: block; font-size: 1.02rem; }
+  ul.stays .sd { display: block; font-size: 0.85rem; color: var(--muted); }
+  ul.stays .sa { display: block; font-size: 0.88rem; margin-top: 2px; }
+  ul.stays .smap { grid-column: 1 / -1; display: block; margin-top: 4px; }
+  ul.stays .smap img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
+  ul.stays .slink { grid-column: 1 / -1; justify-self: start; font-size: 0.88rem; font-weight: 600; color: var(--c); }
+  @media (max-width: 480px) { ul.stays li { grid-template-columns: 1fr; gap: 4px 0; } }
 
   footer { padding: 40px 0 56px; color: var(--muted); font-size: 0.85rem; }
 
@@ -274,6 +285,39 @@
     </table>
   </section>
 
+  <!-- ===== 호텔 ===== -->
+  <section class="block" id="hotels">
+    <h2>묵는 호텔</h2>
+    <ul class="stays">
+      <li class="c-paris">
+        <span class="sc">파리</span>
+        <span class="sh"><strong>New Hotel Lafayette</strong><span class="sd">12/28 ~ 1/1, 4박</span><span class="sa">25 Rue Buffault, 75009 Paris</span><span class="sd">Cadet역(7호선)까지 약 170m, Grands Boulevards역(8·9호선)까지 약 550m (직선거리)</span></span>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener"><img src="img/map-paris.jpg" width="600" height="520" loading="lazy" alt="파리 호텔 New Hotel Lafayette 위치 지도"></a>
+        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=New+Hotel+Lafayette%2C+25+Rue+Buffault%2C+75009+Paris" target="_blank" rel="noopener">Google 지도에서 열기</a>
+      </li>
+      <li class="c-venezia">
+        <span class="sc">베네치아</span>
+        <span class="sh"><strong>Plaza Venice</strong><span class="sd">1/1 ~ 1/3, 2박</span><span class="sa">Viale Stazione 36, 30171 Mestre</span><span class="sd">베네치아 메스트레역 바로 맞은편, 약 100m</span></span>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener"><img src="img/map-venezia.jpg" width="600" height="400" loading="lazy" alt="베네치아 호텔 Plaza Venice 위치 지도"></a>
+        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Plaza+Venice%2C+Viale+Stazione+36%2C+30171+Mestre" target="_blank" rel="noopener">Google 지도에서 열기</a>
+      </li>
+      <li class="c-firenze">
+        <span class="sc">피렌체</span>
+        <span class="sh"><strong>Hotel Albani Firenze</strong><span class="sd">1/3 ~ 1/5, 2박</span><span class="sa">Via Fiume 12, 50123 Firenze</span><span class="sd">피렌체 S.M.N역까지 약 230m (직선거리)</span></span>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener"><img src="img/map-firenze.jpg" width="600" height="400" loading="lazy" alt="피렌체 호텔 Hotel Albani Firenze 위치 지도"></a>
+        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Albani+Firenze%2C+Via+Fiume+12%2C+50123+Firenze" target="_blank" rel="noopener">Google 지도에서 열기</a>
+      </li>
+      <li class="c-roma">
+        <span class="sc">로마</span>
+        <span class="sh"><strong>Hotel Diana Roof Garden</strong><span class="sd">1/5 ~ 1/8, 3박</span><span class="sa">Via Principe Amedeo 4, 00185 Roma</span><span class="sd">로마 테르미니역까지 약 360m (직선거리)</span></span>
+        <a class="smap" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener"><img src="img/map-roma.jpg" width="600" height="400" loading="lazy" alt="로마 호텔 Hotel Diana Roof Garden 위치 지도"></a>
+        <a class="slink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Diana+Roof+Garden%2C+Via+Principe+Amedeo+4%2C+00185+Roma" target="_blank" rel="noopener">Google 지도에서 열기</a>
+      </li>
+    </ul>
+    <p class="note" style="margin-top:10px">지도를 누르면 Google 지도에서 길찾기를 할 수 있습니다. 지도 이미지 © OpenStreetMap contributors</p>
+    <p class="note" style="margin-top:10px">체크인 때 보증용 신용카드를 요구할 수 있습니다. 미니바 등 개인 경비 보증 목적이며, 사용하지 않으면 청구되지 않습니다.</p>
+  </section>
+
   <!-- ===== 날짜별 일정 ===== -->
   <section class="block" id="days">
     <h2>날짜별 일정</h2>
@@ -288,7 +332,7 @@
           <li><span class="t">10:05</span><span>인천공항 출발, 아시아나 OZ501 (약 14시간 15분)</span></li>
           <li><span class="t">16:25</span><span>파리 샤를드골 공항 도착</span></li>
           <li><span class="t soft">도착 후</span><span>공항 미팅 후 호텔까지 1커플 단독 전용차량 <span class="tag inc">포함</span><br><span class="note">현지인 또는 한국인 기사가 공항에서 맞이합니다. 캐리어는 1인 1개 기준이며, 더 있으면 추가 요금이 붙습니다.</span></span></li>
-          <li><span class="t soft">저녁</span><span>호텔 체크인 후 자유 시간</span></li>
+          <li><span class="t soft">저녁</span><span>New Hotel Lafayette 체크인 후 자유 시간</span></li>
         </ul>
         <div class="meals">조식 기내식, 중식 기내식, 석식 자유</div>
       </div>
@@ -321,7 +365,7 @@
       <div>
         <h3><span class="place">파리</span> 시내와 루브르 가이드 투어, 바토무슈</h3>
         <ul class="plan">
-          <li><span class="t">08:50</span><span><strong>파리 시내 + 루브르 박물관 가이드 투어</strong> <span class="tag inc">포함</span><br><span class="note">16:50 종료 예정. 박물관과 시내 투어 순서는 바뀔 수 있습니다.</span></span></li>
+          <li><span class="t">08:50</span><span><strong>파리 시내 + 루브르 박물관 가이드 투어</strong> <span class="tag inc">포함</span><br><span class="note">Franklin D. Roosevelt역 1번 출구에서 미팅, 16:50 종료 예정. 박물관과 시내 투어 순서는 바뀔 수 있습니다.</span></span></li>
           <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
           <li><span class="t soft">저녁</span><span><strong>바토무슈 센강 유람선</strong> <span class="tag inc">포함</span><br><span class="note">원하는 시간에 직접 탑승합니다. 약 1시간 10분.</span></span></li>
         </ul>
@@ -329,7 +373,7 @@
           <summary>가이드 투어 상세</summary>
           <div class="body">
             <dl>
-              <dt>미팅</dt><dd>Bel-Air 역 앞, 한국인 가이드가 모시러 옵니다.<br><span class="note">Bel-Air 역 주변이 아닌 호텔이면 1·9호선 Franklin D. Roosevelt역 1번 출구 라코스테 매장 앞에서 만납니다.</span></dd>
+              <dt>미팅</dt><dd>숙소가 Bel-Air역 주변이 아니어서 <strong>1·9호선 Franklin D. Roosevelt역 1번 출구 라코스테 매장 앞</strong>에서 만납니다.<br><span class="note">호텔 근처 Grands Boulevards역에서 9호선(Pont de Sèvres 방향)을 타면 갈아타지 않고 갈 수 있습니다. 미팅 시간은 최종 확정서에서 확인하세요.</span></dd>
               <dt>포함</dt><dd>가이드비, 수신기 대여</dd>
               <dt>불포함</dt><dd>교통비, 식사비, 입장료</dd>
             </dl>
@@ -374,7 +418,7 @@
           <li><span class="t">14:25</span><span>파리 출발</span></li>
           <li><span class="t">16:05</span><span>베네치아 공항 도착</span></li>
           <li><span class="t soft">도착 후</span><span>공항 미팅 후 호텔까지 1커플 단독 전용차량 <span class="tag inc">포함</span></span></li>
-          <li><span class="t soft">저녁</span><span>호텔 체크인 후 휴식</span></li>
+          <li><span class="t soft">저녁</span><span>Plaza Venice 체크인 후 휴식</span></li>
         </ul>
         <p class="note">유럽 내 항공은 저비용 항공 기준으로 위탁 수하물이 1인 1개, 15~20kg입니다. 넘으면 추가 요금이 붙습니다.</p>
         <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
@@ -387,7 +431,7 @@
       <div>
         <h3><span class="place">베네치아</span> 가이드 투어, 스냅촬영, 곤돌라</h3>
         <ul class="plan">
-          <li><span class="t">08:30</span><span><strong>베네치아 시내 가이드 투어 + 스냅촬영</strong> <span class="tag inc">포함</span><br><span class="note">Plaza 호텔 앞 미팅, 12:30 종료 예정</span></span></li>
+          <li><span class="t">08:30</span><span><strong>베네치아 시내 가이드 투어 + 스냅촬영</strong> <span class="tag inc">포함</span><br><span class="note">묵는 호텔(Plaza Venice) 앞에서 미팅, 12:30 종료 예정</span></span></li>
           <li><span class="t soft">투어 중</span><span><strong>곤돌라 30분 탑승</strong> <span class="tag inc">포함</span></span></li>
           <li><span class="t soft">투어 후</span><span>자유 관광</span></li>
         </ul>
@@ -416,7 +460,7 @@
           <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 메스트레역으로 이동 <span class="tag self">개별</span></span></li>
           <li><span class="t">10:00~</span><span>베네치아 메스트레역 출발 (10:00~10:30대 열차, 약 2시간)</span></li>
           <li><span class="t soft">12시대</span><span>피렌체 산타마리아노벨라(S.M.N)역 도착</span></li>
-          <li><span class="t soft">오후</span><span>호텔에 짐을 두고 피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">체크인 시간 전이면 호텔에 짐을 맡기면 됩니다.</span></span></li>
+          <li><span class="t soft">오후</span><span>Hotel Albani Firenze에 짐을 두고 피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">체크인 시간 전이면 호텔에 짐을 맡기면 됩니다.</span></span></li>
         </ul>
         <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
       </div>
@@ -444,7 +488,7 @@
           <li><span class="t soft">아침</span><span>호텔 조식 후 체크아웃, 짐은 호텔에 맡기기</span></li>
           <li><span class="t soft">낮</span><span>피렌체 자유 관광 <span class="tag self">개별</span><br><span class="note">세계 3대 미술관으로 꼽히는 우피치 미술관 관람 추천</span></span></li>
           <li><span class="t">18시대</span><span>피렌체 S.M.N역 출발 (약 1시간 40분) <span class="tag self">개별</span></span></li>
-          <li><span class="t soft">20시 전후</span><span>로마 테르미니역 도착, 호텔로 이동해 체크인</span></li>
+          <li><span class="t soft">20시 전후</span><span>로마 테르미니역 도착, Hotel Diana Roof Garden으로 걸어서 이동해 체크인 (약 10분)</span></li>
         </ul>
         <div class="meals">조식 호텔, 중식 자유, 석식 자유</div>
       </div>
@@ -527,7 +571,7 @@
     <ul class="check">
       <li>여권 유효기간이 출발일 기준 6개월 이상 남았는지 확인<span class="by">6개월 미만이면 출입국과 열차 발권이 안 됩니다.</span></li>
       <li>베네치아 스냅촬영 진행 여부 결정<span class="by">원하지 않으면 11/28까지 여행사에 알리기</span></li>
-      <li>최종 확정서와 현지 안내 자료 받기<span class="by">출발 2주 전(12/14 무렵) 메일로 옵니다. 호텔도 이때 확정됩니다.</span></li>
+      <li>최종 확정서와 현지 안내 자료 받기<span class="by">출발 2주 전(12/14 무렵) 메일로 옵니다.</span></li>
       <li>아시아나 마일리지 회원 가입<span class="by">출발 전에 가입해야 적립됩니다.</span></li>
       <li>유로 현금 준비<span class="by">스냅 작가 팁(파리, 베네치아 각 1인 €25)과 도시세(1인 1박 €3~8)는 현장에서 냅니다.</span></li>
       <li>캐리어는 1인 1개로 꾸리기<span class="by">전용차량 픽업과 유럽 내 항공(15~20kg) 모두 1인 1개 기준입니다.</span></li>
@@ -566,31 +610,6 @@
     <p class="note" style="margin-top:12px">Trip Concierge Service: 여행 중 사고나 항공·열차 문제가 생기면 현지 매니저가 언어를 도와줍니다. 현지 시간 09:00~18:00에 전화나 카카오톡으로 연락하며, 연락처는 최종 확정서에 있습니다.</p>
   </section>
 
-  <!-- ===== 호텔 ===== -->
-  <section class="block" id="hotels">
-    <h2>호텔 후보</h2>
-    <p class="lead">아래 호텔 또는 같은 등급으로 배정되며, 최종 호텔은 출발 2주 전 확정서에서 안내됩니다.</p>
-    <details class="more">
-      <summary>도시별 후보 호텔 보기</summary>
-      <div class="body hotels">
-        <h3 class="c-paris">파리 (4박)</h3>
-        <p>Best Western Allegro Nation, Adagio Paris Nation <span class="note">Bel-Air역 도보 6분</span></p>
-        <p>Le 209 Bercy, Adagio City Aparthotel Paris Bercy <span class="note">Bercy역 도보 13분</span></p>
-        <p>Best Western Ronceray Opera, Mercure Paris Opera Lafayette, Hotel Regina Opera Grands Boulevards <span class="note">Bonne Nouvelle역 도보 10분</span></p>
-        <p>New Hotel le Voltaire <span class="note">Voltaire역 도보 10분</span></p>
-        <p>Le Marceau Bastille Hotel <span class="note">Bastille역 도보 10분</span></p>
-        <p>Mercure Paris Place d'Italie <span class="note">Corvisart역 도보 10분</span></p>
-        <h3 class="c-venezia">베네치아 (2박)</h3>
-        <p>Plaza Hotel, Best Western Hotel Tritone <span class="note">메스트레역 도보 5분</span></p>
-        <h3 class="c-firenze">피렌체 (2박)</h3>
-        <p>Delle Nazioni Hotel, Hotel Luxor Florence, Caravaggio Hotel, Palazzo Vecchio Hotel <span class="note">S.M.N역 도보 10분. 구시가지 역사지구라 객실이 작은 편이고 냉장고가 없을 수 있습니다.</span></p>
-        <h3 class="c-roma">로마 (3박)</h3>
-        <p>Demetra Hotel, Hotel Genova, Moderno Hotel Roma, Hotel Diana Roof Garden, Bettoja Atlantico Hotel, Hotel Aphrodite Roma, Best Western Artdeco <span class="note">테르미니역 도보 10분</span></p>
-        <p>Napoleon <span class="note">테르미니역 도보 15분</span></p>
-      </div>
-    </details>
-    <p class="note" style="margin-top:10px">호텔 체크인 때 보증용 신용카드를 요구할 수 있습니다. 미니바 등 개인 경비 보증 목적이며, 사용하지 않으면 청구되지 않습니다.</p>
-  </section>
 
 </main>
 
